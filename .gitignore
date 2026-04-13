@@ -1,0 +1,73 @@
+# =========================
+# Java / Maven
+# =========================
+target/
+*.class
+
+# Maven metadata and backups
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# =========================
+# Build artifacts
+# =========================
+*.jar
+*.war
+*.nar
+*.ear
+
+# =========================
+# Logs and crash dumps
+# =========================
+*.log
+hs_err_pid*
+replay_pid*
+
+# =========================
+# Runtime/local data
+# =========================
+# Local task data generated while running the app
+src/main/java/com/project/tasks.json
+
+# =========================
+# IDE / Editor files
+# =========================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+.classpath
+.project
+.settings/
+bin/
+
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+.vscode/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Local environment/secrets
+# =========================
+.env
+.env.*
+*.local
+
