@@ -8,6 +8,9 @@ import com.project.Services.TaskService;
 public class TaskController {
     private TaskService taskService = new TaskService();
 
+    public TaskController() {
+    }
+
     public void addTask(Task task){
         try{
             this.taskService.addTask(task);

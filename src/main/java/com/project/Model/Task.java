@@ -13,6 +13,12 @@ public class Task {
 
     @JsonProperty("status")
     private boolean status;
+
+    public Task(UUID id, String name) {
+        this.id = id;
+        this.name = name;
+        this.status = false;
+    }
     
     public Task(UUID id, String name, boolean status) {
         this.id = id;

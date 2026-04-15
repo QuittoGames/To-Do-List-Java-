@@ -19,6 +19,28 @@ public class Data {
     public static List<Task> getTaskData() {
         return taskData;
     }
+    
+    public static String getTasksFormatted() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n╔════════════════════════════════════════════╗\n");
+        sb.append("║              TASKS                      ║\n");
+        sb.append("╚════════════════════════════════════════════╝\n");
+        
+        if (taskData.isEmpty()) {
+            sb.append("  No tasks yet.\n");
+            return sb.toString();
+        }
+        
+        for (Task task : taskData) {
+            String status = task.isStatus() ? "✅ Done" : "⏳ Pending";
+            sb.append(String.format("┌─────────────────────────────────────────┐\n"));
+            sb.append(String.format("│ UUID: %s\n", task.getId()));
+            sb.append(String.format("│ Name: %s\n", task.getName()));
+            sb.append(String.format("│ Status: %s\n", status));
+            sb.append(String.format("└─────────────────────────────────────────┘\n"));
+        }
+        return sb.toString();
+    }
 
     public List<Task> readTasks() {
         try {

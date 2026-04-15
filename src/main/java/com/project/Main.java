@@ -1,27 +1,51 @@
 package com.project;
 
-import java.util.UUID;
-
-import com.project.Controller.TaskController;
-import com.project.Model.Task;
+import java.util.Scanner;
+import com.project.Services.AppsServices;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-        TaskController controller = new TaskController();
-        UUID id = UUID.randomUUID();
-        Task task = new Task(id, "Comp", false); // Provide a valid id
-        System.out.println("ID 1: "+ task.getId() + "\n");
-        System.out.println(task);
-        controller.addTask(task);
-
-        controller.addTask(new Task(UUID.randomUUID(), "Task 1", false));
-        controller.addTask(new Task(UUID.randomUUID(), "Task 2", false));
-        controller.addTask(new Task(UUID.randomUUID(), "Task 3", true));
-        controller.addTask(new Task(UUID.randomUUID(), "Task 4", false));
-
-
-        controller.completeTask(id);
     
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try{
+            AppsServices.menu();
+            System.out.println("1. Add Task");
+            System.out.println("2. Complete Task");
+            System.out.println("3. Remove Task");
+            System.out.println("4. Exit");
+
+            System.out.print("Write your option: ");
+            String input = sc.nextLine();
+
+            int option;
+            try {
+                option = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                throw new RuntimeException("Invalid input. Please enter a number.");
+            }
+            
+            if (option > 4 || option <= 0 ){
+                throw new RuntimeException("Option cannot be out of bonds");
+            }
+
+            switch (option) {
+                case 1:
+                    AppsServices.addTak();
+                    AppsServices.sleep(1000L);
+                    Main.main(args);
+                    break;
+                case 2:
+                    AppsServices.completeTask();
+                    AppsServices.sleep(1000L);
+                    Main.main(args);
+                default:
+                    break;
+            }
+        }catch(RuntimeException e){
+            System.out.println("[ERROR] " + e.getMessage());
+            AppsServices.sleep(1000L);
+            Main.main(args); // recurçao
+            return;
+        }
     }
 }
